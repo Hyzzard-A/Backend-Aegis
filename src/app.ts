@@ -20,6 +20,8 @@ type BuildAppOptions = {
 };
 
 export async function buildApp(options: BuildAppOptions = {}) {
+
+export async function buildApp() {
   const app = Fastify({ logger: true });
 
   await registerCors(app);
@@ -50,6 +52,9 @@ export async function buildApp(options: BuildAppOptions = {}) {
     await healthRoutes(instance);
     await workspaceRoutes(instance, workspaceService);
     await eventRoutes(instance, eventRepository, eventProcessor);
+  await app.register(async (instance) => {
+    await healthRoutes(instance);
+    await workspaceRoutes(instance, workspaceService);
 
     instance.get('/ws', { websocket: true }, (socket) => {
       const clientId = randomUUID();
