@@ -6,7 +6,7 @@ describe('API HTTP', () => {
   let app: Awaited<ReturnType<typeof buildApp>>;
 
   beforeAll(async () => {
-    app = await buildApp();
+    app = await buildApp({ disableTcpServer: true });
     await app.ready();
   });
 

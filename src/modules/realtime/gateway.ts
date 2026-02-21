@@ -1,3 +1,4 @@
+import type { FastifyBaseLogger } from 'fastify';
 import type { FastifyBaseLogger, FastifyInstance } from 'fastify';
 import type WebSocket from 'ws';
 

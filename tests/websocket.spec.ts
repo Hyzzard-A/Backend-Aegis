@@ -7,7 +7,7 @@ describe('Gateway WebSocket', () => {
   let baseUrl: string;
 
   beforeAll(async () => {
-    app = await buildApp();
+    app = await buildApp({ disableTcpServer: true });
     await app.listen({ host: '127.0.0.1', port: 0 });
     const address = app.server.address();
 
